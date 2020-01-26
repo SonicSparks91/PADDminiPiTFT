@@ -663,7 +663,7 @@ PrintPiholeInformation() {
 PrintPiholeStats() {
   # are we on a tiny screen?
   if [ "$1" = "pico" ]; then
-    printf " %-9s%-29s\\n" "Blocking:" "${domains_being_blocked} domains"
+    printf " %-9s%-29s\\n" "Blocking: " "${domains_being_blocked} domains"
     printf " %-9s[%-20s] %-5s\\n" "Piholed:" "${ads_blocked_bar}" "${ads_percentage_today}%"
     printf " %-9s%-29s\\n" "Piholed:" "${ads_blocked_today} out of ${dns_queries_today}"
   elif [ "$1" = "nano" ]; then
