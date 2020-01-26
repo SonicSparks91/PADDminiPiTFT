@@ -1033,8 +1033,8 @@ StartupRoutine(){
 NormalPADD() {
   for (( ; ; )); do
 
-    console_width=13
-    console_height=$(tput lines)
+    console_width=$(tput cols)
+    console_height=13
 
     # Sizing Checks
     SizeChecker
@@ -1086,8 +1086,8 @@ if [[ $# = 0 ]]; then
 
   clear
 
-  console_width=13
-  console_height=$(tput lines)
+  console_width=$(tput cols)
+  console_height=13
 
   # Get Our Config Values
   # shellcheck disable=SC1091
