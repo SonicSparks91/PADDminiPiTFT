@@ -85,7 +85,7 @@ mega_status_dns_down="${check_box_bad} Pi-hole's DNS server is off!"
 mega_status_unknown="${check_box_question} Unable to determine Pi-hole status."
 
 # Text only "logos"
-padd_text="${green_text}${bold_text}PADD${reset_text}"
+padd_text="${bold_text}${red_text}P${yellow_text}A${green_text}D${blue_text}D${reset_text}${reset_text}"
 padd_text_retro="${bold_text}${red_text}P${yellow_text}A${green_text}D${blue_text}D${reset_text}${reset_text}"
 mini_text_retro="${dim_text}${cyan_text}m${magenta_text}i${red_text}n${yellow_text}i${reset_text}"
 
@@ -176,7 +176,7 @@ GetSummaryInformation() {
   fi
 
   if [ "$1" = "pico" ] || [ "$1" = "nano" ] || [ "$1" = "micro" ]; then
-    ads_blocked_bar=$(BarGenerator "$ads_percentage_today" 10 "color")
+    ads_blocked_bar=$(BarGenerator "$ads_percentage_today" 20 "color")
   elif [ "$1" = "mini" ]; then
     ads_blocked_bar=$(BarGenerator "$ads_percentage_today" 20 "color")
 
@@ -565,7 +565,7 @@ GetVersionInformation() {
 PrintLogo() {
   # Screen size checks
   if [ "$1" = "pico" ]; then
-    echo -e "p${padd_text} ${pico_status}"
+    echo -e "X${padd_text} ${pico_status}"
   elif [ "$1" = "nano" ]; then
     echo -e "n${padd_text} ${mini_status_}"
   elif [ "$1" = "micro" ]; then
@@ -663,7 +663,7 @@ PrintPiholeInformation() {
 PrintPiholeStats() {
   # are we on a tiny screen?
   if [ "$1" = "pico" ]; then
-    printf " %-9s%-29s\\n" "Blckng:" "${domains_being_blocked} domains"
+    printf " %-9s%-29s\\n" "Blocking:" "${domains_being_blocked} domains"
     printf " %-9s[%-20s] %-5s\\n" "Piholed:" "${ads_blocked_bar}" "${ads_percentage_today}%"
     printf " %-9s%-29s\\n" "Piholed:" "${ads_blocked_today} out of ${dns_queries_today}"
   elif [ "$1" = "nano" ]; then
@@ -710,7 +710,8 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-	echo -e  " Up:  ${system_uptime}"    
+	echo -e  " Up:  ${system_uptime}"
+	echo "${bold_text}==============================${reset_text}"    
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
