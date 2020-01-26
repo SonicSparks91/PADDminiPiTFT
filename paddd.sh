@@ -641,8 +641,8 @@ PrintNetworkInformation() {
 PrintPiholeInformation() {
   # size checks
   if [ "$1" = "pico" ]; then
-    echo "${bold_text}PI-HOLE ======================${reset_text}"
-    echo -e " Status:  ${pihole_check_box}      FTL:  ${ftl_check_box}"
+    echo "${bold_text}PI-HOLE ================${reset_text}"
+    printf " Up:  ${pihole_check_box}      FTL: ${ftl_check_box}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}PI-HOLE ================${reset_text}"
     echo -e " Up:  ${pihole_check_box}      FTL: ${ftl_check_box}"
