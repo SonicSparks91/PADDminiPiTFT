@@ -565,7 +565,7 @@ GetVersionInformation() {
 PrintLogo() {
   # Screen size checks
   if [ "$1" = "pico" ]; then
-    echo -e "{padd_text} For Pi-Hole$ ==== ${pico_status}"
+    echo -e "${padd_text} For Pi-Hole ==== ${pico_status}"
   elif [ "$1" = "nano" ]; then
     echo -e "n${padd_text} ${mini_status_}"
   elif [ "$1" = "micro" ]; then
