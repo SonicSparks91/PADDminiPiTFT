@@ -1033,7 +1033,7 @@ StartupRoutine(){
 NormalPADD() {
   for (( ; ; )); do
 
-    console_width=$(tput cols)
+    console_width=13
     console_height=$(tput lines)
 
     # Sizing Checks
@@ -1086,7 +1086,7 @@ if [[ $# = 0 ]]; then
 
   clear
 
-  console_width=11
+  console_width=13
   console_height=$(tput lines)
 
   # Get Our Config Values
