@@ -711,7 +711,7 @@ PrintPiholeStats() {
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
 	echo -e  " Up:  ${system_uptime}"
-	echo "${bold_text}=============================="    
+	echo -ne "${bold_text}=============================="    
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
