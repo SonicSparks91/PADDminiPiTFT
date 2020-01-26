@@ -49,13 +49,13 @@ check_box_question="[${yellow_text}?${reset_text}]"  # Question / ?
 check_box_info="[${yellow_text}i${reset_text}]"      # Info / i
 
 # PICO STATUSES
-pico_status_ok="${check_box_good} Sys. OK"
-pico_status_update="${check_box_info} Update"
-pico_status_hot="${check_box_bad} Sys. Hot!"
+pico_status_ok="${check_box_good} System OK"
+pico_status_update="${check_box_info} Update Available"
+pico_status_hot="${check_box_bad} System running Hot!"
 pico_status_off="${check_box_bad} Offline"
 pico_status_ftl_down="${check_box_info} FTL Down"
 pico_status_dns_down="${check_box_bad} DNS Down"
-pico_status_unknown="${check_box_question} Stat. Unk."
+pico_status_unknown="${check_box_question} Status Unknown"
 
 # MINI STATUS
 mini_status_ok="${check_box_good} System OK"
@@ -197,7 +197,7 @@ GetSummaryInformation() {
 GetSystemInformation() {
   # System uptime
   if [ "$1" = "pico" ] || [ "$1" = "nano" ] || [ "$1" = "micro" ]; then
-    system_uptime=$(uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/){if ($9=="min") {d=$6;m=$8} else {d=$6;h=$8;m=$9}} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours"}')
+    system_uptime=$(uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/){if ($9=="min") {d=$6;m=$8} else {d=$6;h=$8;m=$9}} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes"}')
   else
     system_uptime=$(uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/){if ($9=="min") {d=$6;m=$8} else {d=$6;h=$8;m=$9}} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes"}')
   fi
@@ -230,7 +230,7 @@ GetSystemInformation() {
   # If we're getting close to 85°C... (https://www.raspberrypi.org/blog/introducing-turbo-mode-up-to-50-more-performance-for-free/)
   if [ ${cpu} -gt 80000 ]; then
     temp_heatmap=${blinking_text}${red_text}
-    pico_status="${pico_status_hot}"
+    pico_status="${pico_status_hot} ${blinking_text}${red_text}${temperature}${reset_text}"
     mini_status_="${mini_status_hot} ${blinking_text}${red_text}${temperature}${reset_text}"
     full_status_="${full_status_hot} ${blinking_text}${red_text}${temperature}${reset_text}"
     mega_status="${mega_status_hot} ${blinking_text}${red_text}${temperature}${reset_text}"
@@ -592,7 +592,7 @@ PrintLogo() {
 PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
     echo "${bold_text}NETWORK ============${reset_text}"
-    echo -e " Hst: ${pi_hostname}"
+    echo -e " Host: ${pi_hostname}"
     echo -e " IP:  ${pi_ip_address}"
     echo -e " DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
   elif [ "$1" = "nano" ]; then
@@ -641,7 +641,8 @@ PrintNetworkInformation() {
 PrintPiholeInformation() {
   # size checks
   if [ "$1" = "pico" ]; then
-    :
+    echo "${bold_text}PI-HOLE ======================${reset_text}"
+    echo -e " Status:  ${pihole_check_box}      FTL:  ${ftl_check_box}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}PI-HOLE ================${reset_text}"
     echo -e " Up:  ${pihole_check_box}      FTL: ${ftl_check_box}"
@@ -662,9 +663,9 @@ PrintPiholeInformation() {
 PrintPiholeStats() {
   # are we on a tiny screen?
   if [ "$1" = "pico" ]; then
-    echo "${bold_text}PI-HOLE ============${reset_text}"
-    echo -e " [${ads_blocked_bar}] ${ads_percentage_today}%"
-    echo -e " ${ads_blocked_today} / ${dns_queries_today}"
+    printf " %-9s%-29s\\n" "Blckng:" "${domains_being_blocked} domains"
+    printf " %-9s[%-20s] %-5s\\n" "Piholed:" "${ads_blocked_bar}" "${ads_percentage_today}%"
+    printf " %-9s%-29s\\n" "Piholed:" "${ads_blocked_today} out of ${dns_queries_today}"
   elif [ "$1" = "nano" ]; then
     echo -e " Blk: [${ads_blocked_bar}] ${ads_percentage_today}%"
     echo -e " Blk: ${ads_blocked_today} / ${dns_queries_today}"
@@ -709,8 +710,7 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-    echo "${bold_text}CPU ================${reset_text}"
-    echo -ne " [${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
+	echo -e  " Up:  ${system_uptime}"    
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
