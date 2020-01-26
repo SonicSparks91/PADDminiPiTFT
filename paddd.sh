@@ -828,17 +828,17 @@ SizeChecker(){
     padd_size="pico"
   # Below Slim. Gives you Mini.
   elif [[ "$console_width" -lt "60" || "$console_height" -lt "20" ]]; then
-    padd_size="mini"
+    padd_size="pico"
   # Below Regular. Gives you Slim.
   elif [[ "$console_width" -lt "80" || "$console_height" -lt "26" ]]; then
     if [[ "$console_height" -lt "22" ]]; then
-      padd_size="slim"
+      padd_size="pico"
     else
-      padd_size="regular"
+      padd_size="pico"
     fi
   # Mega
   else
-    padd_size="mega"
+    padd_size="pico"
   fi
 }
 
