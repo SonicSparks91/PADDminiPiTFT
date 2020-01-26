@@ -818,7 +818,7 @@ SizeChecker(){
     echo -e "${check_box_bad} Error!\\n    PADD isn't\\n    for ants!"
     exit 1
   # Below Nano. Gives you Pico.
-  elif [[ "$console_width" -lt "24" || "$console_height" -lt "13" ]]; then
+  elif [[ "$console_width" -lt "24" || "$console_height" -lt "12" ]]; then
     padd_size="pico"
   # Below Micro, Gives you Nano.
   elif [[ "$console_width" -lt "30" || "$console_height" -lt "16" ]]; then
@@ -1086,7 +1086,7 @@ if [[ $# = 0 ]]; then
 
   clear
 
-  console_width=$(tput cols)
+  console_width=11
   console_height=$(tput lines)
 
   # Get Our Config Values
