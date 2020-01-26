@@ -818,14 +818,14 @@ SizeChecker(){
     echo -e "${check_box_bad} Error!\\n    PADD isn't\\n    for ants!"
     exit 1
   # Below Nano. Gives you Pico.
-  elif [[ "$console_width" -lt "24" || "$console_height" -lt "14" ]]; then
+  elif [[ "$console_width" -lt "24" || "$console_height" -lt "12" ]]; then
     padd_size="pico"
   # Below Micro, Gives you Nano.
   elif [[ "$console_width" -lt "30" || "$console_height" -lt "16" ]]; then
-    padd_size="nano"
+    padd_size="pico"
   # Below Mini. Gives you Micro.
   elif [[ "$console_width" -lt "40" || "$console_height" -lt "18" ]]; then
-    padd_size="micro"
+    padd_size="pico"
   # Below Slim. Gives you Mini.
   elif [[ "$console_width" -lt "60" || "$console_height" -lt "20" ]]; then
     padd_size="mini"
