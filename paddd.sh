@@ -591,9 +591,9 @@ PrintLogo() {
 
 PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
-    echo "${bold_text}NETWORK =========================${reset_text}"
+    echo "${bold_text}NETWORK/SYSTEM ================${reset_text}"
     echo -e " Host: ${pi_hostname}"
-    echo -e " IP:  ${pi_ip_address}"
+    echo -e " IPv4: ${IPV4_ADDRESS} IPv6: ${IPV6_ADDRESS}"
     echo -e " DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
@@ -663,7 +663,7 @@ PrintPiholeInformation() {
 PrintPiholeStats() {
   # are we on a tiny screen?
   if [ "$1" = "pico" ]; then
-    printf " %-9s%-29s\\n" "Blocking: " "${domains_being_blocked} domains"
+    printf " %-9s%-29s\\n" "Blocking:" " ${domains_being_blocked} domains"
     printf " %-9s[%-20s] %-5s\\n" "Piholed:" "${ads_blocked_bar}" "${ads_percentage_today}%"
     printf " %-9s%-29s\\n" "Piholed:" "${ads_blocked_today} out of ${dns_queries_today}"
   elif [ "$1" = "nano" ]; then
@@ -710,7 +710,7 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-	echo -ne  " Up:  ${system_uptime}" 
+	echo -ne  " Up:  ${system_uptime} Temp: %-10s${temp_heatmap}%-10s$"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
