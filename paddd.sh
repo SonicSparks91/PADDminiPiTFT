@@ -43,8 +43,8 @@ blinking_text=$(tput blink)
 dim_text=$(tput dim)
 
 # CHECK BOXES
-check_box_good="[${green_text}✓${reset_text}]"       # Good
-check_box_bad="[${red_text}✗${reset_text}]"          # Bad
+check_box_good="[${green_text}✔${reset_text}]"       # Good
+check_box_bad="[${red_text}✘${reset_text}]"          # Bad
 check_box_question="[${yellow_text}?${reset_text}]"  # Question / ?
 check_box_info="[${yellow_text}i${reset_text}]"      # Info / i
 
@@ -594,7 +594,7 @@ PrintNetworkInformation() {
     echo "${bold_text}NETWORK/SYSTEM ===================${reset_text}"
     echo -e " Host: ${pi_hostname}  DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
     echo -e " IP: ${pi_ip_address}  Load:[${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
-    echo -e " CPU Temp:" "${temperature}" "Memory:" "${memory_percent}%"
+    echo -e " CPU Temp: ${temperature}   Memory: ${memory_percent}%"
 
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
