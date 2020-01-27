@@ -594,7 +594,10 @@ PrintNetworkInformation() {
     echo "${bold_text}NETWORK/SYSTEM ===================${reset_text}"
     echo -e " Host: ${pi_hostname}  DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
     echo -e " IP: ${pi_ip_address}  Load:[${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
-    echo -e " PiTemp: ${temperature}  Mem:[${memory_heatmap}${memory_bar}${reset_text}] ${memory_percent}%"
+    echo -e " [${temp_heatmap}${reset_text}] ${temperature}  Mem:[${memory_heatmap}${memory_bar}${reset_text}] ${memory_percent}%"
+
+Tmp:[${temp_heatmap}${reset_text}] ${temperature}
+%-10s${temp_heatmap}%-20s${reset_text}" "CPU Temp:" "${temperature}
 
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
