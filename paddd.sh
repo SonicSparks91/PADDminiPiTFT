@@ -596,7 +596,6 @@ PrintNetworkInformation() {
     echo -e " IPv4: ${IPV4_ADDRESS}  Load:  [${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
     printf " %-10s${temp_heatmap}%-20s${reset_text}" "CPU Temp:" "${temperature}"
 
-	
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
     echo -e " Host: ${pi_hostname}"
