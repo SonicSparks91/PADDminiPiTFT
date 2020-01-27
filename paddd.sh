@@ -593,8 +593,8 @@ PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
     echo "${bold_text}NETWORK/SYSTEM ===================${reset_text}"
     echo -e " Host: ${pi_hostname}  DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
-    echo -e " IP: ${pi_ip_address} Load:[${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
-    echo -e " CPU Temp:" "${temperature}"
+    echo -e " IP: ${pi_ip_address}  Load:[${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
+    echo -e " CPU Temp:" "${temperature}" "Memory:" "${memory_percent}%"
 
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
@@ -643,7 +643,7 @@ PrintPiholeInformation() {
   # size checks
   if [ "$1" = "pico" ]; then
     echo "${bold_text}STATS ============================${reset_text}"
-    echo " Up:  ${pihole_check_box}      FTL: ${ftl_check_box}"
+    echo " PiHoleSrv:  ${pihole_check_box}      FTL: ${ftl_check_box}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}PI-HOLE ================${reset_text}"
     echo -e " Up:  ${pihole_check_box}      FTL: ${ftl_check_box}"
@@ -711,7 +711,7 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-	echo -ne  " Sys Up Time: ${system_uptime}"
+	echo -ne  " Sys Uptime: ${system_uptime}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
