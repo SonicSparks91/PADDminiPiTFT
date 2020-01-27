@@ -710,7 +710,7 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-	echo -ne  " Up:  ${system_uptime} Temp: %-10s${temp_heatmap}%-10s$"
+	echo -ne  " Up:  ${system_uptime} Temp:  ${temperature} "
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
