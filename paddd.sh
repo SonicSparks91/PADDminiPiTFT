@@ -593,7 +593,7 @@ PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
     echo "${bold_text}NETWORK/SYSTEM ================${reset_text}"
     echo -e " Host: ${pi_hostname}"
-    echo -e " IPv4: ${IPV4_ADDRESS} IPv6: ${IPV6_ADDRESS}"
+    echo -e " IPv4: ${IPV4_ADDRESS}"
     echo -e " DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
@@ -710,7 +710,7 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-	echo -ne  " Up:  ${system_uptime} Temp:  ${temperature} "
+	echo -ne  " Up:  ${system_uptime}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
