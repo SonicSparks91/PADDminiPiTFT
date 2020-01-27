@@ -592,9 +592,9 @@ PrintLogo() {
 PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
     echo "${bold_text}NETWORK/SYSTEM ================${reset_text}"
-    echo -e " Host: ${pi_hostname}"
+    echo -e " Host: ${pi_hostname}  DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
     echo -e " IPv4: ${IPV4_ADDRESS}"
-    echo -e " DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
+    echo -e " IPv6: ${IPV6_ADDRESS}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}NETWORK ================${reset_text}"
     echo -e " Host: ${pi_hostname}"
