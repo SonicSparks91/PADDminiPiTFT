@@ -565,7 +565,7 @@ GetVersionInformation() {
 PrintLogo() {
   # Screen size checks
   if [ "$1" = "pico" ]; then
-    echo -e "${padd_text} For Pi-Hole ==== ${pico_status}"
+    echo -e "${padd_text} For Pi-Hole == ${pico_status}"
   elif [ "$1" = "nano" ]; then
     echo -e "n${padd_text} ${mini_status_}"
   elif [ "$1" = "micro" ]; then
@@ -591,7 +591,7 @@ PrintLogo() {
 
 PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
-    echo "${bold_text}NETWORK/SYSTEM ================${reset_text}"
+    echo "${bold_text}NETWORK/SYSTEM ===================${reset_text}"
     echo -e " Host: ${pi_hostname}  DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
     echo -e " IP: ${pi_ip_address} Load:[${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
     echo -e " CPU Temp:" "${temperature}"
@@ -642,7 +642,7 @@ PrintNetworkInformation() {
 PrintPiholeInformation() {
   # size checks
   if [ "$1" = "pico" ]; then
-    echo "${bold_text}STATS =========================${reset_text}"
+    echo "${bold_text}STATS ============================${reset_text}"
     echo " Up:  ${pihole_check_box}      FTL: ${ftl_check_box}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}PI-HOLE ================${reset_text}"
@@ -711,7 +711,7 @@ PrintPiholeStats() {
 
 PrintSystemInformation() {
   if [ "$1" = "pico" ]; then
-	echo -ne  " Up:  ${system_uptime}"
+	echo -ne  " Sys Up Time: ${system_uptime}"
   elif [ "$1" = "nano" ]; then
     echo "${bold_text}SYSTEM =================${reset_text}"
     echo -e  " Up:  ${system_uptime}"
