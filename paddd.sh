@@ -593,8 +593,7 @@ PrintNetworkInformation() {
   if [ "$1" = "pico" ]; then
     echo "${bold_text}NETWORK/SYSTEM ================${reset_text}"
     echo -e " Host: ${pi_hostname}  DHCP ${dhcp_check_box} IPv6 ${dhcp_ipv6_check_box}"
-    echo -e " IPv4: ${IPV4_ADDRESS}"
-    printf " %-10s${temp_heatmap}%-20s${reset_text}" "CPU Temp:" "${temperature}"
+    echo -e " IPv4: ${IPV4_ADDRESS} %-10s${temp_heatmap}%-20s${reset_text}" "CPU Temp:" "${temperature}"
 	printf " Load: [${cpu_load_1_heatmap}${cpu_bar}${reset_text}] ${cpu_percent}%"
 	
   elif [ "$1" = "nano" ]; then
